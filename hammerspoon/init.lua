@@ -1,12 +1,27 @@
 hs.loadSpoon("ReloadConfiguration")
 spoon.ReloadConfiguration:start()
 
-local caffeine = hs.loadSpoon("Caffeine")
-caffeine:bindHotkeys({toggle = {{"ctrl", "alt", "cmd"}, "a"}})
-caffeine:start()
+caffeine = hs.menubar.new()
+function setCaffeineDisplay(state)
+    if state then
+        caffeine:setTitle("AWAKE")
+    else
+        caffeine:setTitle("SLEEPY")
+    end
+end
 
-hs.inspect(spoon.Caffeine)
+function caffeineClicked()
+    setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
+end
 
+hs.urlevent.bind("caffeine-toggle", function()
+    setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
+end)
+
+if caffeine then
+    caffeine:setClickCallback(caffeineClicked)
+    setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
+end
 
 
 -- Defeat paste blocking
