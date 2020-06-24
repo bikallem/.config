@@ -71,6 +71,12 @@ set splitbelow
 set splitright
 " Split help windows vertically, on the right
 autocmd FileType help wincmd L
+" Easier split navigation
+" https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Use system clipboard
 set clipboard+=unnamedplus
@@ -481,7 +487,6 @@ if exists('*minpac#init')
   nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
   nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 
-  call minpac#add('christoomey/vim-tmux-navigator')
   autocmd VimResized * :wincmd =
 
   call minpac#add('lervag/vimtex')
