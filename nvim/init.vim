@@ -328,6 +328,10 @@ if exists('*minpac#init')
 
   " vim-test
   call minpac#add('janko-m/vim-test')
+
+  " call minpac#add('https://git.corp.stripe.com/dbalatero/vim-test-pay-server')
+  " let test#custom_runners = { 'ruby': ['payserver'] }
+
   let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx|iced)$'
   let g:test#javascript#jest#executable = 'yarn test'
   nnoremap <leader>t :TestNearest<cr>
@@ -449,14 +453,15 @@ if exists('*minpac#init')
   let g:pear_tree_smart_backspace = 0
 
   " Deoplete autocompletion
-  " call minpac#add('Shougo/deoplete.nvim')
-  " let g:deoplete#enable_at_startup = 1
-  " autocmd VimEnter * call deoplete#custom#option('sources', {
-  " \ '_': ['ale'],
-  " \ })
+  call minpac#add('Shougo/deoplete.nvim')
+  let g:ale_completion_enabled = 1
+  let g:deoplete#enable_at_startup = 1
+  autocmd VimEnter * call deoplete#custom#option('sources', {
+  \ '_': ['ale'],
+  \ })
   " https://github.com/Shougo/deoplete.nvim/issues/766#issuecomment-498403969
   " https://github.com/Shougo/deoplete.nvim/issues/298
-  " set completeopt-=preview
+  set completeopt-=preview
   " let g:ale_completion_tsserver_autoimport = 1
 
   call minpac#add('machakann/vim-highlightedyank')
@@ -473,31 +478,12 @@ if exists('*minpac#init')
 
   call minpac#add('ap/vim-css-color')
 
-  call minpac#add('neovim/nvim-lsp')
-  packadd nvim-lsp
-  lua require'nvim_lsp'.tsserver.setup{}
-  lua require'nvim_lsp'.pyls.setup{}
-  lua require'nvim_lsp'.solargraph.setup{}
-  nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
-  " nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-  nnoremap <silent> gh     <cmd>lua vim.lsp.buf.hover()<CR>
-  nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-  nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-  nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-  nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-  nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-
   autocmd VimResized * :wincmd =
-
-  call minpac#add('lervag/vimtex')
-  let g:tex_conceal = 0
 
   call minpac#add('tommcdo/vim-exchange')
   call minpac#add('fvictorio/vim-textobj-backticks')
 
   call minpac#add('kshenoy/vim-signature')
-
-  call minpac#add('tpope/vim-fireplace', {'type': 'opt'})
 
   call minpac#add('tpope/vim-rsi')
 
@@ -514,3 +500,14 @@ set colorcolumn=+1
 
 " Add current directory to path
 set path+=.,,
+
+" Define ALE Linters
+packadd ale
+call ale#linter#Define('ruby', {
+\   'name': 'sorbet-payserver',
+\   'lsp': 'stdio',
+\   'executable': 'true',
+\   'command': 'pay exec scripts/bin/typecheck --lsp',
+\   'language': 'ruby',
+\   'project_root': $HOME . '/stripe/pay-server',
+\})
