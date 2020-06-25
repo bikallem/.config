@@ -4,9 +4,9 @@ spoon.ReloadConfiguration:start()
 caffeine = hs.menubar.new()
 function setCaffeineDisplay(state)
     if state then
-        caffeine:setTitle("AWAKE")
+        caffeine:setIcon("images/active.pdf")
     else
-        caffeine:setTitle("SLEEPY")
+        caffeine:setIcon("images/inactive.pdf")
     end
 end
 
