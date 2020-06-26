@@ -21,6 +21,13 @@ function _git_status -d "Writes the current git status, if there is one."
   end
 
   echo -s (set_color normal) " on "
+
+  if test $PWD = "$HOME/stripe/pay-server"
+    # pay-server is so big, we'll just report the branch name without dirty or remote status
+    echo -s "$branch_name"
+    return
+  end
+
   set -l dirty (command git status --porcelain ^/dev/null)
   if test -z "$dirty"
     set_color --bold green

@@ -317,7 +317,6 @@ if exists('*minpac#init')
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
   let g:ale_javascript_eslint_suppress_missing_config = 1
-  let g:ale_prolog_swipl_timeout = 10
   nmap <silent> [W <Plug>(ale_first)
   nmap <silent> [w <Plug>(ale_previous)
   nmap <silent> ]w <Plug>(ale_next)
@@ -328,15 +327,19 @@ if exists('*minpac#init')
 
   " vim-test
   call minpac#add('janko-m/vim-test')
-
-  " call minpac#add('https://git.corp.stripe.com/dbalatero/vim-test-pay-server')
-  " let test#custom_runners = { 'ruby': ['payserver'] }
+  " Stripe testing
+  call minpac#add('https://git.corp.stripe.com/dbalatero/vim-test-pay-server')
+  let test#custom_runners = { 'ruby': ['payserver'] }
 
   let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx|iced)$'
   let g:test#javascript#jest#executable = 'yarn test'
   nnoremap <leader>t :TestNearest<cr>
   nnoremap <leader>T :TestFile<cr>
   nnoremap <leader>a :TestSuite<cr>
+  nnoremap <silent> <leader>l :TestLast<CR>
+  nnoremap <silent> <leader>g :TestVisit<CR>
+  " don't clear the screen and lose test run results
+  let g:test#preserve_screen = 1
 
   "
   " Languages
@@ -384,7 +387,7 @@ if exists('*minpac#init')
   call minpac#add('HerringtonDarkholme/yats.vim')
 
   " JSON
-  call minpac#add('elzr/vim-json')
+  " call minpac#add('elzr/vim-json')
 
   " GraphQL
   call minpac#add('jparise/vim-graphql')
