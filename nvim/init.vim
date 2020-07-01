@@ -225,6 +225,7 @@ if exists('*minpac#init')
   call minpac#add('tpope/vim-fugitive')
   " Fugitive extensions for GitHub
   call minpac#add('tpope/vim-rhubarb')
+  let g:github_enterprise_urls = ['git.corp.stripe.com']
 
   " Pluses and minuses in the sidebar!
   call minpac#add('airblade/vim-gitgutter')
