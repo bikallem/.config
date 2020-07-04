@@ -69,10 +69,10 @@ hs.window.animationDuration = 0
 
 k=hs.hotkey.modal.new({"alt"}, "tab")
 function k:entered()
-  hs.alert.show("Press 'a', 'b' or 'c' for a message, ~Esc~ to exit")
+  hs.alert.show("Entered window mode")
 end
 function k:exited()
-  hs.alert.show("Thanks for playing!")
+  hs.alert.show("Exited window mode")
 end
 
 
@@ -80,6 +80,27 @@ k:bind({}, "space", function()
   local win = hs.window.focusedWindow()
   win:move(hs.layout.maximized)
 end)
-k:bind({}, "b", function() hs.alert.show("Hello Galaxy!") end)
-k:bind({}, "c", function() hs.alert.show("Hello Universe!") end)
+
+-- k:bind({}, "up", function() hs.alert.show("Hello Galaxy!") end)
+-- k:bind({}, "down", function() hs.alert.show("Hello Universe!") end)
+-- k:bind({}, "left", function() hs.alert.show("Hello Galaxy!") end)
+-- k:bind({}, "right", function() hs.alert.show("Hello Universe!") end)
+
+k:bind({"cmd"}, "up", function()
+  local win = hs.window.focusedWindow()
+  win:move({0,0,1,0.5})
+end)
+k:bind({"cmd"}, "down", function()
+  local win = hs.window.focusedWindow()
+  win:move({0,0.5,1,0.5})
+end)
+k:bind({"cmd"}, "left", function()
+  local win = hs.window.focusedWindow()
+  win:move(hs.layout.left50)
+end)
+k:bind({"cmd"}, "right", function()
+  local win = hs.window.focusedWindow()
+  win:move(hs.layout.right50)
+end)
+
 k:bind({}, 'escape', function() k:exit() end)
