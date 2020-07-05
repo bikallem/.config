@@ -491,6 +491,9 @@ if exists('*minpac#init')
 
   call minpac#add('tpope/vim-rsi')
 
+  call minpac#add('chaoren/vim-wordmotion')
+  let g:wordmotion_spaces = '_-.'
+
 else
   colorscheme elflord
 endif
