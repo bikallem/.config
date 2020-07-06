@@ -518,3 +518,6 @@ call ale#linter#Define('ruby', {
 \   'language': 'ruby',
 \   'project_root': $HOME . '/stripe/pay-server',
 \})
+
+" Get file's name
+command! FileName !echo % | pbcopy
