@@ -20,6 +20,8 @@
 	name = Nathan Smith
 	email = nathansmith@stripe.com
 	signingkey = FBD98BBDC624746E
+[init]
+	templatedir = ~/.config/git/template
 [core]
 	editor = nvim
 	pager = diff-so-fancy | less --tabs=4 -RFX
@@ -61,6 +63,7 @@
 	process = git-lfs filter-process
 [hub]
 	protocol = https
+	host = git.corp.stripe.com
 [diff]
 	# https://link.springer.com/article/10.1007%2Fs10664-019-09772-z
 	algorithm = histogram
