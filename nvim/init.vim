@@ -330,7 +330,8 @@ if exists('*minpac#init')
   call minpac#add('janko-m/vim-test')
   " Stripe testing
   call minpac#add('https://git.corp.stripe.com/dbalatero/vim-test-pay-server')
-  let test#custom_runners = { 'ruby': ['payserver'], 'java': ['uppsala'] }
+  let test#java#runner = 'uppsala'
+  let test#custom_runners = { 'java': ['uppsala'] }
 
   let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx|iced)$'
   let g:test#javascript#jest#executable = 'yarn test'
