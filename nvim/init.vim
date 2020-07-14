@@ -494,10 +494,10 @@ if exists('*minpac#init')
 
   call minpac#add('wellle/targets.vim')
 
-  call minpac#add('prabirshrestha/asyncomplete.vim')
-  call minpac#add('prabirshrestha/vim-lsp')
-  call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
-  call minpac#add('mattn/vim-lsp-settings')
+  " call minpac#add('prabirshrestha/asyncomplete.vim')
+  " call minpac#add('prabirshrestha/vim-lsp')
+  " call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
+  " call minpac#add('mattn/vim-lsp-settings')
   let g:lsp_signs_enabled = 1         " enable signs
   let g:lsp_diagnostics_enabled = 1
 
@@ -539,24 +539,24 @@ call ale#linter#Define('ruby', {
 " Get file's name
 command! FileName !echo % | pbcopy
 
-function! s:on_lsp_buffer_enabled() abort
-  setlocal omnifunc=lsp#complete
-  setlocal signcolumn=yes
-  if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-  nmap <buffer> gd <plug>(lsp-definition)
-  nmap <buffer> gr <plug>(lsp-references)
-  nmap <buffer> gi <plug>(lsp-implementation)
-  nmap <buffer> gt <plug>(lsp-type-definition)
-  nmap <buffer> <leader>rn <plug>(lsp-rename)
-  nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
-  nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
-  nmap <buffer> gh <plug>(lsp-hover)
+" function! s:on_lsp_buffer_enabled() abort
+"   setlocal omnifunc=lsp#complete
+"   setlocal signcolumn=yes
+"   if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+"   nmap <buffer> gd <plug>(lsp-definition)
+"   nmap <buffer> gr <plug>(lsp-references)
+"   nmap <buffer> gi <plug>(lsp-implementation)
+"   nmap <buffer> gt <plug>(lsp-type-definition)
+"   nmap <buffer> <leader>rn <plug>(lsp-rename)
+"   nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
+"   nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
+"   nmap <buffer> gh <plug>(lsp-hover)
 
-  " refer to doc to add more commands
-endfunction
+"   " refer to doc to add more commands
+" endfunction
 
-augroup lsp_install
-  au!
-  " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
+" augroup lsp_install
+"   au!
+"   " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+"   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+" augroup END
