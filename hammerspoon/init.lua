@@ -166,7 +166,7 @@ spoon.URLDispatcher:start()
 
 -- Eject drives on sleep
 hs.loadSpoon("EjectMenu")
-spoon.EjectMenu.never_eject = {"Keybase"}
+spoon.EjectMenu.never_eject = {"Keybase", "GoogleDrive"}
 spoon.EjectMenu.notify = true
 spoon.EjectMenu.show_in_menubar = false
 spoon.EjectMenu:start()
