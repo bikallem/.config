@@ -2,6 +2,7 @@
 .projections.json
 .idea
 .gradle/
+tags
 
 
 # macOS things
