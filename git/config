@@ -72,3 +72,5 @@
 	smtpuser = natedub@fastmail.com
 	smtpencryption = tls
 	smtpserverport = 587
+[push]
+	default = current
