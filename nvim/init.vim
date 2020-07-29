@@ -169,6 +169,7 @@ set statusline+=%f
 set statusline+=%m
 set statusline+=\ %{FugitiveStatusline()}
 set statusline+=%=
+set statusline+=%{gutentags#statusline()}
 set statusline+=%{SyntaxItem()}
 set statusline+=\ %y
 
@@ -322,13 +323,23 @@ if exists('*minpac#init')
   nmap <silent> [w <Plug>(ale_previous)
   nmap <silent> ]w <Plug>(ale_next)
   nmap <silent> ]W <Plug>(ale_last)
+  nmap <silent> gd <plug>(ale_go_to_definition)
+  nmap <silent> gh <plug>(ale_hover)
 
   " vim-test
   call minpac#add('vim-test/vim-test')
   " Stripe testing
   call minpac#add('https://git.corp.stripe.com/dbalatero/vim-test-pay-server')
   let test#java#runner = 'uppsala'
-  let test#custom_runners = { 'java': ['uppsala'] }
+  let test#custom_runners = { 'ruby': ['Payserver'], 'javascript': ['Payserver'], 'java': ['Uppsala'] }
+
+  if fnamemodify(getcwd(), ':p') == $HOME.'/stripe/pay-server/'
+    let test#enabled_runners = ["ruby#payserver", "javascript#payserver"]
+  end
+
+  if fnamemodify(getcwd(), ':p') == $HOME.'/stripe/uppsala/'
+    let test#enabled_runners = ["java#uppsala"]
+  end
 
   let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx|iced)$'
   let g:test#javascript#jest#executable = 'yarn test'
@@ -474,6 +485,7 @@ if exists('*minpac#init')
 
   call minpac#add('kana/vim-textobj-user')
   call minpac#add('kana/vim-textobj-entire')
+  call minpac#add('nelstrom/vim-textobj-rubyblock')
 
   call minpac#add('andrewradev/splitjoin.vim')
   call minpac#add('AndrewRadev/tagalong.vim')
@@ -490,7 +502,7 @@ if exists('*minpac#init')
   call minpac#add('tpope/vim-rsi')
 
   call minpac#add('chaoren/vim-wordmotion')
-  let g:wordmotion_spaces = '_-.'
+  let g:wordmotion_spaces = ''
 
   call minpac#add('wellle/targets.vim')
 
@@ -512,6 +524,33 @@ if exists('*minpac#init')
   let g:lsp_fold_enabled = 0
 
   call minpac#add('ludovicchabant/vim-gutentags')
+  " let g:gutentags_trace = 1
+  let g:gutentags_ctags_executable_ruby = 'ripper-tags'
+  let g:gutentags_ctags_extra_args = ['--recurse']
+  let g:gutentags_ctags_exclude = [
+  \  '*.git', '*.svn', '*.hg',
+  \  'vendor', 'cache', 'build', 'dist', 'bin', 'node_modules', 'bower_components',
+  \  '*-lock.json',  '*.lock',
+  \  '*.min.*',
+  \  '*.bak',
+  \  '*.zip',
+  \  '*.pyc',
+  \  '*.class',
+  \  '*.sln',
+  \  '*.csproj', '*.csproj.user',
+  \  '*.tmp',
+  \  '*.cache',
+  \  '*.vscode',
+  \  '*.pdb',
+  \  '*.exe', '*.dll', '*.bin',
+  \  '*.mp3', '*.ogg', '*.flac',
+  \  '*.swp', '*.swo',
+  \  '.DS_Store', '*.plist',
+  \  '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png', '*.svg',
+  \  '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
+  \  '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx', '*.xls',
+  \  '*.vim'
+  \]
 
 else
   colorscheme elflord
@@ -562,3 +601,95 @@ command! FileName !echo % | pbcopy
 "   " call s:on_lsp_buffer_enabled only for languages that has the server registered.
 "   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 " augroup END
+"
+
+command! Intellij execute ":!idea %:p --line " . line('.')
+command! VSCode execute ":!code -g %:p\:" . line('.') . ":" . col('.')
+
+command! ReloadConfig source $MYVIMRC
+
+
+let g:netrw_gx="<cWORD>"
+
+
+
+augroup stripe_projectionist
+  autocmd!
+  autocmd User ProjectionistDetect call s:stripe_configure_projectionist(g:projectionist_file)
+  autocmd BufEnter *.rb call s:config_alternates_pay_server(expand("<afile>:p"))
+augroup END
+
+function! s:stripe_configure_projectionist(buffer_path)
+  call s:config_alternates_stripe_js_v3(a:buffer_path)
+endfunction
+
+function! s:config_alternates_stripe_js_v3(buffer_path)
+  if a:buffer_path =~ "stripe/stripe-js-v3"
+    let l:projections = {
+      \ "*.test.js": { 'alternate': '{}.js' },
+      \ "*.js": { 'alternate': '{}.test.js' },
+    \}
+
+    call projectionist#append(getcwd(), l:projections)
+  endif
+endfunction
+
+function! s:find_test_directory(path)
+  let l:directory = fnamemodify(a:path, ":p:h")
+  let l:relative_dir = substitute(l:directory, getcwd() . "/*", "", "")
+  let l:pieces = split(l:relative_dir, "/")
+
+  while len(l:pieces) > 0
+    let l:current_dir = join(l:pieces, "/")
+    let l:possible_test_dir = l:current_dir . "/test"
+
+    if isdirectory(l:possible_test_dir)
+      " found the test dir
+      return { 'root': l:current_dir, 'test_dir': l:possible_test_dir }
+    endif
+
+    call remove(l:pieces, -1)
+  endwhile
+
+  return {}
+endfunction
+
+function! s:config_alternates_pay_server(buffer_path)
+  if a:buffer_path =~ "stripe/pay-server"
+    if empty(get(b:, 'stripe_projectionist_registered_files'))
+      let b:stripe_projectionist_registered_files = {}
+    endif
+
+    if get(b:stripe_projectionist_registered_files, a:buffer_path)
+      " we already did a recursive search in this buffer, let's not do it
+      " again
+      return
+    endif
+
+    if empty(get(b:, 'projectionist'))
+      let b:projectionist = getbufvar('#', 'projectionist')
+    endif
+
+    let l:search = s:find_test_directory(a:buffer_path)
+
+    " mark that we've already done the expensive search
+    let b:stripe_projectionist_registered_files[a:buffer_path] = 1
+
+    if l:search == {}
+      return
+    endif
+
+    let l:projections = {}
+    let l:projections[l:search['root'] . "/*"] =
+      \ {
+      \   'alternate': l:search['test_dir'] . "/{}",
+      \ }
+
+    let l:projections[l:search['test_dir'] . "/*"] =
+      \ {
+      \   'alternate': l:search['root'] . "/{}",
+      \ }
+
+    call projectionist#append(getcwd(), l:projections)
+  endif
+endfunction
