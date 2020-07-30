@@ -148,8 +148,8 @@ set diffopt+=vertical
 let s:uname = trim(system("uname -s"))
 " Python support
 if s:uname == "Darwin"
-  let g:python_host_prog = "/usr/local/bin/python"
-  let g:python3_host_prog = "/usr/local/opt/python@3.8/bin/python3"
+  let g:python_host_prog = "/usr/bin/python"
+  let g:python3_host_prog = "/usr/local/bin/python3"
 endif
 
 if s:uname == "Darwin"
@@ -495,7 +495,6 @@ if exists('*minpac#init')
   autocmd VimResized * :wincmd =
 
   call minpac#add('tommcdo/vim-exchange')
-  call minpac#add('fvictorio/vim-textobj-backticks')
 
   call minpac#add('kshenoy/vim-signature')
 
@@ -505,23 +504,6 @@ if exists('*minpac#init')
   let g:wordmotion_spaces = ''
 
   call minpac#add('wellle/targets.vim')
-
-  " call minpac#add('prabirshrestha/asyncomplete.vim')
-  " call minpac#add('prabirshrestha/vim-lsp')
-  " call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
-  " call minpac#add('mattn/vim-lsp-settings')
-  let g:lsp_signs_enabled = 1         " enable signs
-  let g:lsp_diagnostics_enabled = 1
-
-  " Getting no results with echos or floats
-  " let g:lsp_diagnostics_echo_delay = 0
-  " let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
-  " let g:lsp_diagnostics_float_cursor = 1
-  " let g:lsp_diagnostics_float_delay = 0
-  let g:lsp_virtual_text_enabled = 1
-  let g:lsp_virtual_text_prefix = "  ‣ "
-  let g:lsp_highlight_references_enabled = 0
-  let g:lsp_fold_enabled = 0
 
   call minpac#add('ludovicchabant/vim-gutentags')
   " let g:gutentags_trace = 1
@@ -580,29 +562,6 @@ call ale#linter#Define('ruby', {
 " Get file's name
 command! FileName !echo % | pbcopy
 
-" function! s:on_lsp_buffer_enabled() abort
-"   setlocal omnifunc=lsp#complete
-"   setlocal signcolumn=yes
-"   if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-"   nmap <buffer> gd <plug>(lsp-definition)
-"   nmap <buffer> gr <plug>(lsp-references)
-"   nmap <buffer> gi <plug>(lsp-implementation)
-"   nmap <buffer> gt <plug>(lsp-type-definition)
-"   nmap <buffer> <leader>rn <plug>(lsp-rename)
-"   nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
-"   nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
-"   nmap <buffer> gh <plug>(lsp-hover)
-
-"   " refer to doc to add more commands
-" endfunction
-
-" augroup lsp_install
-"   au!
-"   " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-"   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-" augroup END
-"
-
 command! Intellij execute ":!idea %:p --line " . line('.')
 command! VSCode execute ":!code -g %:p\:" . line('.') . ":" . col('.')
 
@@ -615,24 +574,8 @@ let g:netrw_gx="<cWORD>"
 
 augroup stripe_projectionist
   autocmd!
-  autocmd User ProjectionistDetect call s:stripe_configure_projectionist(g:projectionist_file)
   autocmd BufEnter *.rb call s:config_alternates_pay_server(expand("<afile>:p"))
 augroup END
-
-function! s:stripe_configure_projectionist(buffer_path)
-  call s:config_alternates_stripe_js_v3(a:buffer_path)
-endfunction
-
-function! s:config_alternates_stripe_js_v3(buffer_path)
-  if a:buffer_path =~ "stripe/stripe-js-v3"
-    let l:projections = {
-      \ "*.test.js": { 'alternate': '{}.js' },
-      \ "*.js": { 'alternate': '{}.test.js' },
-    \}
-
-    call projectionist#append(getcwd(), l:projections)
-  endif
-endfunction
 
 function! s:find_test_directory(path)
   let l:directory = fnamemodify(a:path, ":p:h")
