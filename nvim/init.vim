@@ -508,6 +508,7 @@ if exists('*minpac#init')
   call minpac#add('ludovicchabant/vim-gutentags')
   " let g:gutentags_trace = 1
   let g:gutentags_ctags_executable_ruby = 'ripper-tags'
+  let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'gitsendemail', 'git']
   let g:gutentags_ctags_extra_args = ['--recurse']
   let g:gutentags_ctags_exclude = [
   \  '*.git', '*.svn', '*.hg',
