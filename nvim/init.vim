@@ -467,15 +467,17 @@ if exists('*minpac#init')
 
   " Deoplete autocompletion
   call minpac#add('Shougo/deoplete.nvim')
-  let g:ale_completion_enabled = 1
+  " let g:ale_completion_enabled = 1
   let g:deoplete#enable_at_startup = 1
-  autocmd VimEnter * call deoplete#custom#option('sources', {
-  \ '_': ['ale'],
-  \ })
+  " autocmd VimEnter * call deoplete#custom#option('sources', {
+  " \ '_': ['ale'],
+  " \ })
   " https://github.com/Shougo/deoplete.nvim/issues/766#issuecomment-498403969
   " https://github.com/Shougo/deoplete.nvim/issues/298
   set completeopt-=preview
   " let g:ale_completion_tsserver_autoimport = 1
+  "
+  call minpac#add('beeender/Comrade', {'type': 'opt'})
 
   call minpac#add('machakann/vim-highlightedyank')
 
