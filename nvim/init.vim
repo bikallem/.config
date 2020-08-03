@@ -25,9 +25,9 @@ source $HOME/.config/nvim/config/stripe.vim
 
 
 
+
+
 "  " Handle swap files better
 "  " call minpac#add('gioele/vim-autoswap')
 "  " let g:autoswap_detect_tmux = 1
 "
-
-
