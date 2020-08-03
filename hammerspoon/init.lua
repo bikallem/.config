@@ -35,10 +35,8 @@ hs.hotkey.bind({"cmd", "alt"}, "V", function() hs.eventtap.keyStrokes(hs.pastebo
 -- Inspired by https://github.com/Hammerspoon/Spoons/blob/master/Source/HighSierraiTunesMediaFix.spoon/init.lua
 function mediaKeyCallback(event)
   local delete = false
+
   local data = event:systemKey()
-  if data["key"] == "PLAY" then
-    delete = true
-  end
 
   if data["down"] == false or data["repeat"] == true then
     if data["key"] == "PLAY" then
@@ -56,7 +54,7 @@ function mediaKeyCallback(event)
   return delete, nil
 end
 
-hs.eventtap.new({hs.eventtap.event.types.NSSystemDefined}, mediaKeyCallback):start()
+hs.eventtap.new({hs.eventtap.event.types.NSSystemDefined}, mediaKeyCallback)
 
 -- Window Hints
 hs.hints.hintChars = {'a', 'o', 'e', 'u', 'i', 'd', 'h', 't', 'n', 's'}
@@ -103,10 +101,32 @@ k:bind({}, "right", function()
   hs.grid.pushWindowRight(win)
 end)
 
--- OPTION: grow/shrink windows
-k:bind({"alt"}, "up", function()
+-- CTRL: shrink windows
+k:bind({"ctrl"}, "up", function()
   local win = hs.window.focusedWindow()
   hs.grid.resizeWindowShorter(win)
+end)
+k:bind({"ctrl"}, "down", function()
+  local win = hs.window.focusedWindow()
+  hs.grid.pushWindowDown(win)
+  hs.grid.resizeWindowShorter(win)
+end)
+k:bind({"ctrl"}, "left", function()
+  local win = hs.window.focusedWindow()
+  hs.grid.resizeWindowThinner(win)
+end)
+k:bind({"ctrl"}, "right", function()
+  local win = hs.window.focusedWindow()
+  hs.grid.pushWindowRight(win)
+  hs.grid.resizeWindowThinner(win)
+end)
+
+-- OPTION: grow windows
+k:bind({"alt"}, "up", function()
+  local win = hs.window.focusedWindow()
+  hs.grid.pushWindowUp(win)
+  hs.grid.pushWindowUp(win)
+  hs.grid.resizeWindowTaller(win)
 end)
 k:bind({"alt"}, "down", function()
   local win = hs.window.focusedWindow()
@@ -114,7 +134,9 @@ k:bind({"alt"}, "down", function()
 end)
 k:bind({"alt"}, "left", function()
   local win = hs.window.focusedWindow()
-  hs.grid.resizeWindowThinner(win)
+  hs.grid.pushWindowLeft(win)
+  hs.grid.pushWindowLeft(win)
+  hs.grid.resizeWindowWider(win)
 end)
 k:bind({"alt"}, "right", function()
   local win = hs.window.focusedWindow()
@@ -147,13 +169,11 @@ k:bind({}, 'escape', function() k:exit() end)
 -- URL Dispatcher
 hs.loadSpoon("URLDispatcher")
 local Zoom = "us.zoom.xos"
-local Reeder = "com.reederapp.macOS"
 local Chrome = "com.google.Chrome"
 local Spotify = "com.spotify.client"
 local Firefox = "org.mozilla.firefox"
 local Notion = "notion.id"
 spoon.URLDispatcher.url_patterns = {
-  -- Open Zoom links directly in Zoom
   {"https?://zoom.us/j/", Zoom},
   {"https?://%w+.zoom.us/j/", Zoom},
   -- Open Notion links in Notion
