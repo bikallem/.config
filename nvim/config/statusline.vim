@@ -20,6 +20,7 @@ set statusline+=%f
 set statusline+=%m
 set statusline+=\ %{FugitiveStatusline()}
 set statusline+=\ %{LspStatus()}
+set statusline+=\ %{gutentags#statusline()}
 set statusline+=%=
 set statusline+=%{SyntaxItem()}
 set statusline+=\ %y

@@ -39,3 +39,20 @@ nvim_lsp.tsserver.setup{
   on_attach = on_attach,
   capabilities = lsp_status.capabilities
 }
+
+local configs = require 'nvim_lsp/configs'
+-- local util = require 'nvim_lsp/util'
+
+-- if not nvim_lsp.sorbet then
+configs.sorbet = {
+  default_config = {
+    cmd = {"pay", "exec", "scripts/bin/typecheck", "--lsp"};
+    filetypes = {"ruby"};
+    root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git");
+  };
+};
+-- end
+nvim_lsp.sorbet.setup{
+  on_attach = on_attach,
+  capabilities = lsp_status.capabilities
+}

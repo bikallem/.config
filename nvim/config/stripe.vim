@@ -5,18 +5,6 @@ autocmd VimResized * :wincmd =
 let g:github_enterprise_urls = ['git.corp.stripe.com']
 
 
-
-" Define ALE Linters
-packadd ale
-call ale#linter#Define('ruby', {
-\   'name': 'sorbet-payserver',
-\   'lsp': 'stdio',
-\   'executable': 'true',
-\   'command': 'pay exec scripts/bin/typecheck --lsp',
-\   'language': 'ruby',
-\   'project_root': $HOME . '/stripe/pay-server',
-\})
-
 " Get file's name
 command! FileName !echo % | pbcopy
 
