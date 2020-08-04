@@ -173,9 +173,11 @@ local Chrome = "com.google.Chrome"
 local Spotify = "com.spotify.client"
 local Firefox = "org.mozilla.firefox"
 local Notion = "notion.id"
+local Slack = "com.tinyspeck.slackmacgap"
 spoon.URLDispatcher.url_patterns = {
   {"https?://zoom.us/j/", Zoom},
   {"https?://%w+.zoom.us/j/", Zoom},
+  {"https?://app.slack.com", Slack},
   -- Open Notion links in Notion
   {"https?://notion.so", Notion},
   {"https?://www.notion.so", Notion},
