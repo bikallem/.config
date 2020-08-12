@@ -88,8 +88,7 @@ call minpac#add('neovim/nvim-lsp', {'type': 'opt'})
 packadd nvim-lsp
 
 function! s:b_lsp()
-  nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-  nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+  nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> gh     <cmd>lua vim.lsp.buf.hover()<CR>
   nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
   nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
@@ -104,7 +103,7 @@ endfunction
 
 augroup lsp
   autocmd!
-  autocmd FileType vim,ruby call s:b_lsp()
+  autocmd FileType vim,ruby,javascript,javascriptreact call s:b_lsp()
   autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
 augroup END
 

@@ -43,3 +43,17 @@ public void test{$1:Functionality}() {
 	$0
 }
 endsnippet
+
+# Uppsala-specific
+
+snippet dreadmaker "Maker"
+package com.stripe.terminal.terminal.server.api.dreadnought.dreadnoughtservice.maker;
+
+import com.goindex.proto.api.dreadnought.DreadnoughtService.${1:Request/Response to make};
+
+public class $1Maker {
+	public static $1 from(${2:Param to make from}) {
+		return $1.newBuilder().set${3:ValueToSet}($4).build();
+	}
+}
+endsnippet

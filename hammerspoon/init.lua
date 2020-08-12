@@ -179,7 +179,7 @@ spoon.URLDispatcher.url_patterns = {
   {"https?://%w+.zoom.us/j/", Zoom},
   {"https?://app.slack.com", Slack},
   -- Open Notion links in Notion
-  {"https?://notion.so", Notion},
+  -- {"https?://notion.so", Notion},
   {"https?://www.notion.so", Notion},
   {"https?://open.spotify.com/", Spotify},
 }

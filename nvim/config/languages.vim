@@ -40,6 +40,7 @@ autocmd BufNewFile,BufRead *.iced set filetype=coffee
 " JavaScript
 call minpac#add('pangloss/vim-javascript')
 let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_flow = 1
 call minpac#add('styled-components/vim-styled-components', {'branch': 'main'})
 call minpac#add('maxmellon/vim-jsx-pretty')
 " TypeScript

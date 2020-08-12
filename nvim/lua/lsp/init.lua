@@ -35,13 +35,19 @@ nvim_lsp.vimls.setup{
   on_attach = on_attach,
   capabilities = lsp_status.capabilities
 }
-nvim_lsp.tsserver.setup{
+-- nvim_lsp.tsserver.setup{
+--   on_attach = on_attach,
+--   capabilities = lsp_status.capabilities
+-- }
+require'nvim_lsp'.flow.setup{
   on_attach = on_attach,
   capabilities = lsp_status.capabilities
 }
 
 local configs = require 'nvim_lsp/configs'
 -- local util = require 'nvim_lsp/util'
+
+
 
 -- if not nvim_lsp.sorbet then
 configs.sorbet = {
