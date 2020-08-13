@@ -1,19 +1,7 @@
 " Stripe specific config
 
-autocmd VimResized * :wincmd =
 
 let g:github_enterprise_urls = ['git.corp.stripe.com']
-
-
-" Get file's name
-command! FileName !echo % | pbcopy
-
-command! Intellij execute ":!idea %:p --line " . line('.')
-command! VSCode execute ":!code -g %:p\:" . line('.') . ":" . col('.')
-
-command! ReloadConfig source $MYVIMRC
-
-let g:netrw_gx="<cWORD>"
 
 augroup stripe_projectionist
   autocmd!

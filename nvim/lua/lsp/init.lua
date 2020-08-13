@@ -55,7 +55,7 @@ nvim_lsp.vimls.setup{
 -- }
 require'nvim_lsp'.flow.setup{
   on_attach = on_attach,
-  capabilities = lsp_status.capabilities
+  -- capabilities = lsp_status.capabilities
 }
 
 local configs = require 'nvim_lsp/configs'

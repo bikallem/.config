@@ -1,2 +1,2 @@
 " let b:ale_fixers = ['rubocop']
-let b:ale_linters = ['ruby', 'rubocop', 'sorbet-payserver']
+let b:ale_linters = ['ruby', 'rubocop']
