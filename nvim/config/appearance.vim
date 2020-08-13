@@ -5,6 +5,9 @@
 call minpac#add('nathunsmitty/night-owl.vim')
 colorscheme night-owl
 
+" Resize windows on move
+autocmd VimResized * :wincmd =
+
 " Reset the cursor on exit
 " See https://github.com/neovim/neovim/issues/4867#issuecomment-291249173
 " and https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-nvim
@@ -66,7 +69,9 @@ set foldlevelstart=99
 "  " \}
 "
 " Show colors for hex codes
-"  call minpac#add('ap/vim-css-color')
+call minpac#add('norcalli/nvim-colorizer.lua')
+packadd nvim-colorizer.lua
+lua require 'colorizer'.setup(nil, { css = true; })
 
 " Highlight yanks
 call minpac#add('machakann/vim-highlightedyank')
