@@ -14,6 +14,10 @@ function! LspStatus() abort
   return ''
 endfunction
 
+function TreeSitter() abort
+  return luaeval("require('nvim-treesitter').statusline(20)")
+endfunction
+
 set laststatus=2
 set statusline=
 set statusline+=%f
@@ -21,6 +25,7 @@ set statusline+=%m
 set statusline+=\ %{FugitiveStatusline()}
 set statusline+=\ %{LspStatus()}
 set statusline+=\ %{gutentags#statusline()}
+set statusline+=\ %{TreeSitter()}
 set statusline+=%=
 set statusline+=%{SyntaxItem()}
 set statusline+=\ %y

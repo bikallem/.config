@@ -15,18 +15,29 @@ source $HOME/.config/nvim/config/integrations.vim
 source $HOME/.config/nvim/config/languages.vim
 source $HOME/.config/nvim/config/navigation.vim
 
-" LSP config, in lua
-lua require("lsp")
-
 source $HOME/.config/nvim/config/statusline.vim
 
-source $HOME/.config/nvim/config/stripe.vim
+call minpac#add('nvim-treesitter/nvim-treesitter')
+packadd nvim-treesitter
+lua require("treesitter")
 
 
+" From Learn VimScript the Hard Way, Ch 4
+" :imap <c-u> <esc>viw~i
+" :imap <c-U> <esc>viW~i
+" :nmap <c-u> <esc>viw~
+" :nmap <c-U> <esc>viw~
+"
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>rv :source $MYVIMRC<cr>
 
+" Handle common typos
+iabbrev adn and
 
+nnoremap H ^
+nnoremap L $
 
-
+let g:diagnostic_enable_ale = 1
 
 "  " Handle swap files better
 "  " call minpac#add('gioele/vim-autoswap')
