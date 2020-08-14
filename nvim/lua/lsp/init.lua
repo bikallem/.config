@@ -58,7 +58,6 @@ require'nvim_lsp'.flow.setup{
   -- capabilities = lsp_status.capabilities
 }
 
-local configs = require 'nvim_lsp/configs'
 -- local util = require 'nvim_lsp/util'
 
 
@@ -70,7 +69,9 @@ configs.sorbet = {
     filetypes = {"ruby"};
     root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git");
   };
+  on_attach = on_attach,
 };
+
 -- end
 nvim_lsp.sorbet.setup{
   on_attach = on_attach,

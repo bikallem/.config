@@ -20,6 +20,7 @@ source $HOME/.config/nvim/config/statusline.vim
 call minpac#add('nvim-treesitter/nvim-treesitter')
 packadd nvim-treesitter
 lua require("treesitter")
+" TSEnableAll highlight
 
 
 " From Learn VimScript the Hard Way, Ch 4

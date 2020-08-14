@@ -15,7 +15,7 @@ function! LspStatus() abort
 endfunction
 
 function TreeSitter() abort
-  return luaeval("require('nvim-treesitter').statusline(20) or ''")
+  return luaeval("require('nvim-treesitter').statusline() or ''")
 endfunction
 
 function! LinterStatus() abort

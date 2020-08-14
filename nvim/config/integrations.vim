@@ -73,7 +73,7 @@ nnoremap <leader>a :TestSuite<cr>
 " Linter support
 " ALE
 call minpac#add('dense-analysis/ale')
-" let g:ale_disable_lsp = 1
+let g:ale_disable_lsp = 1
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -95,7 +95,7 @@ packadd lsp-status.nvim
 packadd diagnostic-nvim
 packadd completion-nvim
 " LSP config, in lua
-lua require("lsp")
+" lua require("lsp")
 
 setlocal omnifunc=v:lua.vim.lsp.omnifunc
 " Show errors after 1 second
