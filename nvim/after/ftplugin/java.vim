@@ -8,5 +8,3 @@ highlight link javaType Type
 highlight link javaDocTags PreProc
 " Disable the comment title color
 hi def link javaCommentTitle Comment
-
-packadd Comrade
