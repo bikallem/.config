@@ -3,6 +3,7 @@ if status --is-login; and status --is-interactive; and test -e $HOME/.stripeprox
   alias stripe='cd ~/stripe'
   alias pay-server='cd ~/stripe/pay-server'
   alias uppsala='cd ~/stripe/uppsala'
+  alias run-end-to-end="python /Volumes/GoogleDrive/Shared\ Drives/Terminal/End-to-end\ testing/run.py"
 
   # Add the stripe tools paths
   set -x PATH $HOME/stripe/space-commander/bin $PATH

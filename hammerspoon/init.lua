@@ -180,29 +180,14 @@ spoon.URLDispatcher.url_patterns = {
   {"https?://app.slack.com", Slack},
   -- Open Notion links in Notion
   -- {"https?://notion.so", Notion},
-  {"https?://www.notion.so", Notion},
   {"https?://open.spotify.com/", Spotify},
 }
 spoon.URLDispatcher.default_handler = Chrome
 spoon.URLDispatcher:start()
 
--- Eject drives on sleep
-hs.loadSpoon("EjectMenu")
-spoon.EjectMenu.never_eject = {"Keybase", "GoogleDrive"}
-spoon.EjectMenu.notify = true
-spoon.EjectMenu.show_in_menubar = false
-spoon.EjectMenu:start()
-
--- Dark Mode
-darkmode = require "darkmode"
-darkmode.addHandler(function(isDarkMode)
-  local prevApplication = hs.application.frontmostApplication()
-  -- Activate Notion, toggle dark mode
-  local notion = hs.application.get("Notion")
-  if notion ~= nil then
-    notion:activate()
-    hs.eventtap.keyStroke({"cmd", "shift"}, "l")
-  end
-  -- Restore prevApplication
-  prevApplication:activate()
-end)
+-- -- Eject drives on sleep
+-- hs.loadSpoon("EjectMenu")
+-- spoon.EjectMenu.never_eject = {"Keybase", "GoogleDrive"}
+-- spoon.EjectMenu.notify = true
+-- spoon.EjectMenu.show_in_menubar = false
+-- spoon.EjectMenu:start()
