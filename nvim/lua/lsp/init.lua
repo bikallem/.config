@@ -8,7 +8,8 @@ local util = require('nvim_lsp/util')
 local on_attach = function(client, bufnr)
   -- lsp_status.on_attach(client, bufnr)
   diagnostic.on_attach(client, bufnr)
-  completion.on_attach(client, bufnr)
+  -- Do this on every buffer
+  -- completion.on_attach(client, bufnr)
 
   -- Keybindings for LSPs
   vim.fn.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", {noremap = true, silent = true})

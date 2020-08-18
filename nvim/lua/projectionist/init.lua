@@ -54,5 +54,16 @@ vim.api.nvim_set_var('projectionist_heuristics', {
       ['type'] = 'test',
       ['alternate'] = 'src/test/java/{}.java'
     }
+  },
+  ['*.proto'] = {
+    ['*.proto'] = {
+      ['type'] = 'source',
+      ['alternate'] = 'BUILD'
+    }
+  },
+  ['BUILD'] = {
+    ['BUILD'] = {
+      ['type'] = 'build',
+    }
   }
 })

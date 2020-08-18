@@ -1,6 +1,5 @@
 " Stripe specific config
 
-
 let g:github_enterprise_urls = ['git.corp.stripe.com']
 
 augroup stripe_projectionist

@@ -16,6 +16,7 @@ source $HOME/.config/nvim/config/languages.vim
 source $HOME/.config/nvim/config/navigation.vim
 
 source $HOME/.config/nvim/config/statusline.vim
+source $HOME/.config/nvim/config/stripe.vim
 
 call minpac#add('nvim-treesitter/nvim-treesitter', {'type': 'opt'})
 packadd nvim-treesitter
@@ -46,6 +47,19 @@ let g:diagnostic_enable_ale = 1
 "  " let g:autoswap_detect_tmux = 1
 "
 "
+call minpac#add('steelsojka/completion-buffers', {"type": "opt"})
+packadd completion-buffers
+autocmd BufEnter * lua require'completion'.on_attach()
+
+let g:completion_auto_change_source = 1
+let g:completion_chain_complete_list = [
+    \{'complete_items': ['lsp']},
+    \{'complete_items': ['buffers']},
+    \{'mode': '<c-p>'},
+    \{'mode': '<c-n>'},
+    \{'mode': 'tags'},
+    \{'mode': 'file'}
+\]
 
 packadd nvim-colorizer.lua
 lua require 'colorizer'.setup(nil, { css = true; })
