@@ -8,10 +8,11 @@
 " Put plugin managment first, as it handles install minpac for later files
 source $HOME/.config/nvim/config/plugin-management.vim
 
+source $HOME/.config/nvim/config/integrations.vim
 source $HOME/.config/nvim/config/appearance.vim
 source $HOME/.config/nvim/config/custom-commands.vim
+source $HOME/.config/nvim/config/completion.vim
 source $HOME/.config/nvim/config/editing.vim
-source $HOME/.config/nvim/config/integrations.vim
 source $HOME/.config/nvim/config/languages.vim
 source $HOME/.config/nvim/config/navigation.vim
 
@@ -47,19 +48,6 @@ let g:diagnostic_enable_ale = 1
 "  " let g:autoswap_detect_tmux = 1
 "
 "
-call minpac#add('steelsojka/completion-buffers', {"type": "opt"})
-packadd completion-buffers
-autocmd BufEnter * lua require'completion'.on_attach()
-
-let g:completion_auto_change_source = 1
-let g:completion_chain_complete_list = [
-    \{'complete_items': ['lsp']},
-    \{'complete_items': ['buffers']},
-    \{'mode': '<c-p>'},
-    \{'mode': '<c-n>'},
-    \{'mode': 'tags'},
-    \{'mode': 'file'}
-\]
 
 packadd nvim-colorizer.lua
 lua require 'colorizer'.setup(nil, { css = true; })
