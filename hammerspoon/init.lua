@@ -5,6 +5,7 @@ spoon.ReloadConfiguration:start()
 hyper = { "ctrl", "alt", "cmd" }
 shift_hyper = { "shift", "ctrl", "alt", "cmd" }
 
+
 -- Caffeine
 caffeine = hs.menubar.new()
 function setCaffeineDisplay(state)
@@ -191,3 +192,8 @@ spoon.URLDispatcher:start()
 -- spoon.EjectMenu.notify = true
 -- spoon.EjectMenu.show_in_menubar = false
 -- spoon.EjectMenu:start()
+
+spaces = require("hs._asm.undocumented.spaces")
+
+require("focus")
+require("stripe")
