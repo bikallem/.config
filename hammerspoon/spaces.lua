@@ -1,0 +1,13 @@
+-- -- Autoclose empty spaces
+-- hs.spaces.watcher.new(function(space)
+--   -- hs.alert.show(spaces.activeSpace())
+--   local allSpaces = spaces.query()
+
+--   for _, spaceId in pairs(allSpaces) do
+--     print(space)
+--     -- if #spaces.allWindowsForSpace(space) == 0 then
+--     --   print("removing")
+--     --   spaces.removeSpace(space)
+--     -- end
+--   end
+-- end):start()

@@ -855,6 +855,8 @@
 	</dict>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
+	<key>HideMenuBarInFullscreen</key>
+	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>IRMemory</key>
@@ -911,9 +913,9 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>970 768 620 392 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 2560 1417 0 0 2560 1417 </string>
+	<string>510 6 930 864 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>403 102 810 577 0 0 2560 1417 </string>
+	<string>0 7 1440 863 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>972 362 810 577 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -3131,14 +3133,16 @@
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {2560, 1440}}</string>
+		<string>{{0, 0}, {1440, 900}}</string>
 		<key>topLeft</key>
-		<string>{508, 882}</string>
+		<string>{269, 595}</string>
 	</dict>
+	<key>NoSyncHaveUsedCopyMode</key>
+	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>064CF2CC-E69C-4A6A-8F53-3172678DDE0A</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>46</integer>
+	<integer>47</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -3923,7 +3927,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-08-18T16:05:03Z</date>
+	<date>2020-08-19T16:05:03Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateGroupIdentifier</key>
@@ -3933,7 +3937,7 @@
 	<key>Secure Input</key>
 	<true/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>

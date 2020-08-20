@@ -196,4 +196,6 @@ spoon.URLDispatcher:start()
 spaces = require("hs._asm.undocumented.spaces")
 
 require("focus")
+require("spaces")
 require("stripe")
+require("brightness")

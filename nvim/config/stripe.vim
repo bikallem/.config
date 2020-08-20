@@ -67,15 +67,15 @@ function! s:config_alternates_pay_server(buffer_path)
   endif
 endfunction
 
-  " Stripe testing
-  call minpac#add('https://git.corp.stripe.com/dbalatero/vim-test-pay-server')
-  let test#java#runner = 'uppsala'
-  let test#custom_runners = { 'ruby': ['Payserver'], 'javascript': ['Payserver'], 'java': ['Uppsala'] }
+" Stripe testing
+call minpac#add('https://git.corp.stripe.com/dbalatero/vim-test-pay-server')
+let test#java#runner = 'uppsala'
+let test#custom_runners = { 'ruby': ['Payserver'], 'javascript': ['Payserver'], 'java': ['Uppsala'] }
 
-  if fnamemodify(getcwd(), ':p') == $HOME.'/stripe/pay-server/'
-    let test#enabled_runners = ["ruby#payserver", "javascript#payserver"]
-  end
+if fnamemodify(getcwd(), ':p') == $HOME.'/stripe/pay-server/'
+  let test#enabled_runners = ["ruby#payserver", "javascript#payserver"]
+end
 
-  if fnamemodify(getcwd(), ':p') == $HOME.'/stripe/uppsala/'
-    let test#enabled_runners = ["java#uppsala"]
-  end
+if fnamemodify(getcwd(), ':p') == $HOME.'/stripe/uppsala/'
+  let test#enabled_runners = ["java#uppsala"]
+end

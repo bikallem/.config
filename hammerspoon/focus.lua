@@ -1,6 +1,9 @@
 -- App Selection
 hs.hotkey.bind({"ctrl", "cmd"}, "t", function()
-  hs.application.launchOrFocus("Kitty")
+  hs.application.launchOrFocus("iTerm")
+end)
+hs.hotkey.bind({"ctrl", "cmd"}, "i", function()
+  hs.application.launchOrFocus("Intellij IDEA")
 end)
 hs.hotkey.bind({"ctrl", "cmd"}, "c", function()
   hs.application.launchOrFocus("Google Chrome")
@@ -17,7 +20,7 @@ hs.hotkey.bind({"ctrl", "cmd"}, "s", function()
 end)
 
 -- Hints
--- hs.hints.hintChars = {'a', 'o', 'e', 'u', 'i', 'd', 'h', 't', 'n', 's'}
+-- hs.hints.hintChars = {'', 'o', 'e', 'u', 'i', 'd', 'h', 't', 'n', 's'}
 hs.hints.style = 'vimperator'
 hs.hotkey.bind({"ctrl", "cmd"}, 'h', function()
   hs.hints.windowHints()

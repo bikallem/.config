@@ -7,12 +7,12 @@
 
 " Put plugin managment first, as it handles install minpac for later files
 source $HOME/.config/nvim/config/plugin-management.vim
+source $HOME/.config/nvim/config/editing.vim
 
 source $HOME/.config/nvim/config/integrations.vim
 source $HOME/.config/nvim/config/appearance.vim
 source $HOME/.config/nvim/config/custom-commands.vim
 source $HOME/.config/nvim/config/completion.vim
-source $HOME/.config/nvim/config/editing.vim
 source $HOME/.config/nvim/config/languages.vim
 source $HOME/.config/nvim/config/navigation.vim
 
@@ -41,7 +41,6 @@ iabbrev adn and
 nnoremap H ^
 nnoremap L $
 
-let g:diagnostic_enable_ale = 1
 
 "  " Handle swap files better
 "  " call minpac#add('gioele/vim-autoswap')

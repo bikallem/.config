@@ -66,9 +66,11 @@ call minpac#add('tpope/vim-eunuch')
 call minpac#add('vim-test/vim-test')
 let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx|iced)$'
 let g:test#javascript#jest#executable = 'yarn test'
-nnoremap <leader>t :TestNearest<cr>
-nnoremap <leader>T :TestFile<cr>
-nnoremap <leader>a :TestSuite<cr>
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
 
 " Linter support
 " ALE
@@ -93,7 +95,9 @@ call minpac#add('nathunsmitty/diagnostic-nvim', {'type': 'opt'})
 packadd lsp-status.nvim
 packadd diagnostic-nvim
 " LSP config, in lua
-lua require("lsp")
+" lua require("lsp")
 
 " Show errors after 1 second
 let g:diagnostic_insert_delay = 1
+let g:diagnostic_show_sign = 0
+let g:diagnostic_enable_ale = 1
