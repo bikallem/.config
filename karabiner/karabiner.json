@@ -40,6 +40,35 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Set upper button to back and lower to forward",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "pointing_button": "button6"
+                                },
+                                "to": {
+                                    "key_code": "hyphen",
+                                    "modifiers": [
+                                        "left_gui"
+                                    ]
+                                },
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "pointing_button": "button4"
+                                },
+                                "to": {
+                                    "key_code": "equal_sign",
+                                    "modifiers": [
+                                        "left_gui"
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
@@ -218,21 +247,26 @@
                         },
                         {
                             "from": {
-                                "pointing_button": "button4"
+                                "pointing_button": "button3"
                             },
                             "to": {
-                                "key_code": "4"
-                            }
-                        },
-                        {
-                            "from": {
-                                "pointing_button": "button6"
-                            },
-                            "to": {
-                                "key_code": "6"
+                                "pointing_button": "button2"
                             }
                         }
                     ]
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 635,
+                        "vendor_id": 1452
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": true,
+                    "simple_modifications": []
                 }
             ],
             "fn_function_keys": [
@@ -338,24 +372,7 @@
                 "delay_milliseconds_before_open_device": 1000
             },
             "selected": true,
-            "simple_modifications": [
-                {
-                    "from": {
-                        "pointing_button": "button6"
-                    },
-                    "to": {
-                        "key_code": "1"
-                    }
-                },
-                {
-                    "from": {
-                        "pointing_button": "button4"
-                    },
-                    "to": {
-                        "key_code": "6"
-                    }
-                }
-            ],
+            "simple_modifications": [],
             "virtual_hid_keyboard": {
                 "country_code": 0,
                 "mouse_key_xy_scale": 100
