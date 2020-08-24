@@ -8,5 +8,5 @@ require'nvim-treesitter.configs'.setup {
       ["css.class"] = "cssClassName"
     },
   },
-  ensure_installed = {"css", "query", "java", "ruby"},
+  ensure_installed = {"css", "query", "java"},
 }

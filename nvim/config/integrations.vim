@@ -95,7 +95,7 @@ call minpac#add('nathunsmitty/diagnostic-nvim', {'type': 'opt'})
 packadd lsp-status.nvim
 packadd diagnostic-nvim
 " LSP config, in lua
-" lua require("lsp")
+lua require("lsp")
 
 " Show errors after 1 second
 let g:diagnostic_insert_delay = 1

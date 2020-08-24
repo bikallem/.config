@@ -25,6 +25,7 @@ lua require("treesitter")
 " TSEnableAll highlight
 
 
+noremap <c-z> <nop>
 
 " From Learn VimScript the Hard Way, Ch 4
 " :imap <c-u> <esc>viw~i
