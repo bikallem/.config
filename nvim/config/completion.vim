@@ -2,7 +2,9 @@ call minpac#add('nvim-lua/completion-nvim', {'type': 'opt'})
 call minpac#add('steelsojka/completion-buffers', {"type": "opt"})
 packadd completion-nvim
 packadd completion-buffers
-autocmd BufEnter * lua require'completion'.on_attach()
+
+" let ftToIgnore = ['markdown', 'text']
+" autocmd BufEnter * lua require'completion'.on_attach()
 
 " Complete parentheses for functions
 let g:completion_enable_auto_paren = 1

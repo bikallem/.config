@@ -33,9 +33,13 @@ nvim_lsp.vimls.setup{
 --   on_attach = on_attach,
 --   capabilities = lsp_status.capabilities
 -- }
-require'nvim_lsp'.flow.setup{
+nvim_lsp.flow.setup{
+  -- cmd = {"$HOME/stripe/pay-server/manage/frontend/node_modules/.bin/flow"},
   on_attach = on_attach,
+  -- root_dir = util.root_pattern(".flowconfig"),
 }
+-- print(util.root_pattern(".flowconfig"))
+
 
 -- local util = require 'nvim_lsp/util'
 

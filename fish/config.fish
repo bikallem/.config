@@ -6,4 +6,6 @@ if status --is-login; and status --is-interactive
   set -x PATH /usr/local/opt/curl/bin $PATH
   # Use installed LLVM tools
   set -x PATH /usr/local/opt/llvm/bin $PATH
+  # Rust
+  set -x PATH $HOME/.cargo/bin $PATH
 end
