@@ -11,12 +11,25 @@ lua require("projectionist")
 " fzf is much better than selecta, fzy, etc. though
 " ripgrep has the fastest search
 call minpac#add('srstevenson/vim-picker')
-nnoremap <silent> <leader>p :PickerEdit<CR>
 let g:picker_custom_find_executable = 'rg'
 let g:picker_custom_find_flags = '-g !.git/ --files --hidden --color never'
 let g:picker_selector_executable = 'fzf'
-let g:picker_selector_flags = '--layout=reverse'
+let g:picker_selector_flags = '--layout=reverse --tiebreak=index'
 let g:picker_height = 14
+
+" From https://balatero.com/writings/vim/fzf-ripgrep-proximity-sort/
+function! g:FzfFilesSource()
+  let l:base = fnamemodify(expand('%'), ':h:.:S')
+  let l:proximity_sort_path = $HOME . '/.cargo/bin/proximity-sort'
+
+  if base == '.'
+    return printf('%s %s', g:picker_custom_find_executable, g:picker_custom_find_flags)
+  else
+    return printf('%s %s | %s %s', g:picker_custom_find_executable, g:picker_custom_find_flags, l:proximity_sort_path, expand('%'))
+  endif
+endfunction
+
+nnoremap <silent> <leader>p :call picker#File(g:FzfFilesSource(), 'edit')<CR>
 
 " NERDTree
 call minpac#add('scrooloose/nerdtree')
