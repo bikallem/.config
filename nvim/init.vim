@@ -19,10 +19,9 @@ source $HOME/.config/nvim/config/navigation.vim
 source $HOME/.config/nvim/config/statusline.vim
 source $HOME/.config/nvim/config/stripe.vim
 
-call minpac#add('nvim-treesitter/nvim-treesitter', {'type': 'opt'})
+" call minpac#add('nvim-treesitter/nvim-treesitter', {'type': 'opt'})
 " packadd nvim-treesitter
 " lua require("treesitter")
-" TSEnableAll highlight
 
 
 noremap <c-z> <nop>
