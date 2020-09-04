@@ -36,7 +36,8 @@ nvim_lsp.vimls.setup{
 nvim_lsp.flow.setup{
   -- cmd = {"$HOME/stripe/pay-server/manage/frontend/node_modules/.bin/flow"},
   on_attach = on_attach,
-  -- root_dir = util.root_pattern(".flowconfig"),
+  -- util.root_pattern(".flowconfig"),
+  -- root_dir = util.find_node_modules_ancestor(vim.fn.expand('%'))
 }
 -- print(util.root_pattern(".flowconfig"))
 
@@ -45,20 +46,17 @@ nvim_lsp.flow.setup{
 
 
 
--- if not nvim_lsp.sorbet then
 configs.sorbet = {
   default_config = {
-    cmd = {"pay", "exec", "scripts/bin/typecheck", "--lsp"};
+    cmd = {"pay", "exec", "/pay/src/pay-server/scripts/bin/typecheck", "--lsp"};
     filetypes = {"ruby"};
     root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git");
   };
-  on_attach = on_attach,
 };
-
--- end
 nvim_lsp.sorbet.setup{
   on_attach = on_attach,
 }
+
 nvim_lsp.html.setup{
   on_attach = on_attach,
 }

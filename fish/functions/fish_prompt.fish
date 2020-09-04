@@ -22,7 +22,7 @@ function _git_status -d "Writes the current git status, if there is one."
 
   echo -s (set_color normal) " on "
 
-  if test $PWD = "$HOME/stripe/pay-server"
+  if string match --quiet "$HOME/stripe/pay-server*" $PWD
     # pay-server is so big, we'll just report the branch name without dirty or remote status
     echo -s "$branch_name"
     return

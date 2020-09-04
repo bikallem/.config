@@ -18,6 +18,7 @@ endif
 
 " ctags integration with gutentags
 call minpac#add('ludovicchabant/vim-gutentags',  {'rev': '31c0ead'})
+let g:gutentags_define_advanced_commands = 1
 let g:gutentags_ctags_executable_ruby = 'ripper-tags'
 let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'gitsendemail', 'git', 'vim', 'javascript']
 let g:gutentags_ctags_exclude = [
@@ -75,7 +76,7 @@ nmap <silent> <leader>g :TestVisit<CR>
 " Linter support
 " ALE
 call minpac#add('dense-analysis/ale')
-" let g:ale_disable_lsp = 1
+let g:ale_disable_lsp = 1
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
