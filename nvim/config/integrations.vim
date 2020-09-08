@@ -20,7 +20,7 @@ endif
 call minpac#add('ludovicchabant/vim-gutentags',  {'rev': '31c0ead'})
 let g:gutentags_define_advanced_commands = 1
 let g:gutentags_ctags_executable_ruby = 'ripper-tags'
-let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'gitsendemail', 'git', 'vim', 'javascript']
+let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'gitsendemail', 'git', 'vim', 'javascript', 'eruby']
 let g:gutentags_ctags_exclude = [
       \  '*.git', '*.svn', '*.hg',
       \  'cache', 'build', 'dist', 'bin', 'node_modules', 'bower_components',
