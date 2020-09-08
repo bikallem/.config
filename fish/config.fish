@@ -8,4 +8,7 @@ if status --is-login; and status --is-interactive
   set -x PATH /usr/local/opt/llvm/bin $PATH
   # Rust
   set -x PATH $HOME/.cargo/bin $PATH
+  # GO
+  set -x GOPATH $HOME/stripe/go
+  set -x PATH $GOPATH/bin $PATH
 end
