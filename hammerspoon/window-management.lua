@@ -3,7 +3,7 @@
 -- Set animation duration
 hs.window.animationDuration = 0
 
-ignoreApps = {"iStat Menus Status", "Fantastical Helper"}
+ignoreApps = {"Zoom", "Finder", "iStat Menus Status", "Fantastical Helper"}
 centerApps = {"System Preferences", "Dictionary"}
 halfApps = {"Dash", "Soulver"}
 secondaryApps = {"Spotify", "Slack"}

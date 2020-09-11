@@ -6,6 +6,11 @@
 " 3. Change functionality only when it doesn't make sense
 
 " Put plugin managment first, as it handles install minpac for later files
+
+" Disable Netrw
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+
 source $HOME/.config/nvim/config/plugin-management.vim
 source $HOME/.config/nvim/config/editing.vim
 
