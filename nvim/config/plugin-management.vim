@@ -87,6 +87,11 @@ function! PackagerInit() abort
   let g:python_highlight_all = 1
   " Elixir
   call packager#add('elixir-editors/vim-elixir')
+  " Fennel
+  call packager#add('bakpakin/fennel.vim')
+
+  call packager#add('guns/vim-sexp')
+  call packager#add('tpope/vim-sexp-mappings-for-regular-people')
 endfunction
 
 
