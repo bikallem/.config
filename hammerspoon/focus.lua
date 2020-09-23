@@ -9,14 +9,14 @@ hs.hotkey.bind({"ctrl", "cmd"}, "d", function()
   hs.application.launchOrFocus("Dash")
 end)
 hs.hotkey.bind({"ctrl", "cmd"}, "b", function()
-  hs.application.launchOrFocus("Safari")
+  hs.application.launchOrFocus("Google Chrome")
 end)
 -- m for "music"
 hs.hotkey.bind({"ctrl", "cmd"}, "m", function()
   hs.application.launchOrFocus("Spotify")
 end)
-hs.hotkey.bind({"ctrl", "cmd"}, "s", function()
-  hs.application.launchOrFocus("Slack")
+hs.hotkey.bind({"ctrl", "cmd"}, "c", function()
+  hs.application.launchOrFocus("Workplace Chat")
 end)
 
 -- Hints

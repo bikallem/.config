@@ -101,15 +101,12 @@ abbr --add ynb 'yarn build'
 abbr --add yna 'yarn add'
 abbr --add ynad 'yarn add --dev'
 
-# Keybase
-abbr --add kb 'keybase'
-abbr --add kbc 'keybase chat'
-abbr --add kbw 'keybase wallet'
-abbr --add kbwa 'keybase wallet api'
-
 # Fish Greeting
 # -------------
 set -U fish_greeting
+
+# Editor
+set -U EDITOR nvim
 
 # Application configuration
 # -------------------------

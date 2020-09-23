@@ -2,11 +2,10 @@
 " Package manager: vim-packager, https://github.com/kristijanhusak/vim-packager
 
 function! PackagerInit() abort
-  source $MYVIMRC
   packadd vim-packager
   call packager#init()
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
-  call packager#local('~/Developer/night-owl.vim')
+  call packager#add('nathunsmitty/night-owl.vim')
   call packager#add('airblade/vim-gitgutter')
   call packager#add('kshenoy/vim-signature')
   call packager#add('norcalli/nvim-colorizer.lua', {'type': 'opt'})
@@ -44,7 +43,7 @@ function! PackagerInit() abort
   call packager#add('kyazdani42/nvim-web-devicons', {'type': 'opt'})
   call packager#add('kyazdani42/nvim-tree.lua', {'type': 'opt'})
   call packager#add('stsewd/gx-extended.vim')
-  call packager#local('~/Developer/vim-packages/nvim-lspconfig', {'type': 'opt'})
+  call packager#add('neovim/nvim-lspconfig', {'type': 'opt'})
   call packager#add('nvim-lua/lsp-status.nvim', {'type': 'opt'})
   call packager#add('nathunsmitty/diagnostic-nvim', {'type': 'opt'})
   call packager#add('nvim-lua/completion-nvim', {'type': 'opt'})

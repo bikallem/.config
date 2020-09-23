@@ -30,108 +30,30 @@ end
 --   indicator_ok = 'ok',
 -- })
 
-nvim_lsp.clangd.setup({
-  -- callbacks = lsp_status.extensions.clangd.setup(),
-  init_options = {
-    clangdFileStatus = true
-  },
-  on_attach = on_attach,
-  -- capabilities = lsp_status.capabilities
-})
-nvim_lsp.pyls.setup{
-  on_attach = on_attach,
-  -- capabilities = lsp_status.capabilities
-}
--- nvim_lsp.sumneko_lua.setup{
---   settings = {
---     Lua = {
---       runtime = { version = "LuaJIT", path = vim.split(package.path, ';'), },
---       completion = { keywordSnippet = "Disable", },
---       diagnostics = { enable = true, globals = {"vim", "describe", "it", "before_each", "after_each"}},
---       workspace = {
---         library = {
---           [vim.fn.expand("$VIMRUNTIME/lua")] = true,
---           [vim.fn.expand("~/build/neovim/src/nvim/lua")] = true,
---         },
---       },
---     },
---   },
+-- nvim_lsp.pyls.setup{
 --   on_attach = on_attach,
+--   -- capabilities = lsp_status.capabilities
 -- }
-nvim_lsp.vimls.setup{
-  on_attach = on_attach,
-  -- capabilities = lsp_status.capabilities
-}
-nvim_lsp.tsserver.setup{
-  on_attach = on_attach,
-  -- capabilities = lsp_status.capabilities
-}
-nvim_lsp.html.setup{
-  on_attach = on_attach,
-  -- capabilities = lsp_status.capabilities
-}
-nvim_lsp.cssls.setup{
-  on_attach = on_attach,
-  -- capabilities = lsp_status.capabilities,
-  settings = {
-    css = {
-      validate = false
-    },
-    less = {
-      validate = true
-    },
-    scss = {
-      validate = true
-    }
-  }
-}
-
-local server_name = "svelte_lsp"
-local bin_name = "svelteserver"
-
--- local installer = util.npm_installer {
---   server_name = server_name,
---   packages = {"svelte-language-server"},
---   binaries = {bin_name}
+-- nvim_lsp.vimls.setup{
+--   on_attach = on_attach,
+--   -- capabilities = lsp_status.capabilities
 -- }
-
-configs[server_name] = {
-  default_config = {
-    cmd = {bin_name, "--stdio"};
-    filetypes = {"svelte"};
-    root_dir = util.root_pattern("package.json", "tsconfig.json", ".git");
-   -- docs = {
-   --   description = [[
-   --   https://github.com/theia-ide/typescript-language-server
-   --   `typescript-language-server` can be installed via `:LspInstall tsserver` or by yourself with `npm`:
-   --   ```sh
-   --   npm install -g typescript-language-server
-   --   ```
-   --   ]];
-   --   default_config = {
-   --     root_dir = [[root_pattern("package.json", "tsconfig.json", ".git")]];
-   --   };
-   -- };
- };
-}
-
-nvim_lsp.sorbet.setup{
-  on_attach = on_attach,
-  -- capabilities = lsp_status.capabilities
-}
-nvim_lsp.svelte_lsp.setup{
-  on_attach = on_attach,
-  -- capabilities = lsp_status.capabilities
-}
-nvim_lsp.rust_analyzer.setup{
-  on_attach = on_attach,
-  -- capabilities = lsp_status.capabilities
-}
-nvim_lsp.elixirls.setup{
-  on_attach = on_attach,
-  -- capabilities = lsp_status.capabilities
-}
-nvim_lsp.gopls.setup{
-  on_attach = on_attach,
-  -- capabilities = lsp_status.capabilities
-}
+-- nvim_lsp.html.setup{
+--   on_attach = on_attach,
+--   -- capabilities = lsp_status.capabilities
+-- }
+-- nvim_lsp.cssls.setup{
+--   on_attach = on_attach,
+--   -- capabilities = lsp_status.capabilities,
+--   settings = {
+--     css = {
+--       validate = false
+--     },
+--     less = {
+--       validate = true
+--     },
+--     scss = {
+--       validate = true
+--     }
+--   }
+-- }

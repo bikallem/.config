@@ -4,8 +4,6 @@ local geometry = require("hs.geometry")
 hs.window.animationDuration = 0
 
 -- Ignore headless apps
-hs.window.filter.ignoreAlways['Safari Technology Preview Networking'] = true
-hs.window.filter.ignoreAlways['Mail Networking'] = true
 hs.window.filter.ignoreAlways['Dash Networking'] = true
 
 local log = hs.logger.new("window-manger")
@@ -15,7 +13,9 @@ log.i("Initializing")
 -- Focus Navigation
 -- By app (lowercase)
 hs.hotkey.bind({"alt"}, "h", function()
+  log.i("Focusing on left window")
   local win = hs.window.focusedWindow()
+  print(win)
   win:focusWindowWest(nil, true)
 end)
 
