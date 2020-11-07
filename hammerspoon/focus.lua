@@ -18,6 +18,9 @@ end)
 hs.hotkey.bind({"ctrl", "cmd"}, "c", function()
   hs.application.launchOrFocus("Workplace Chat")
 end)
+hs.hotkey.bind({"ctrl", "cmd"}, "v", function()
+  hs.application.launchOrFocus("VS Code @ FB")
+end)
 
 -- Hints
 -- hs.hints.hintChars = {'a', 'o', 'e', 'u', 'i', 'd', 'h', 't', 'n', 's'}
